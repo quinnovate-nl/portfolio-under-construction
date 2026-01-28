@@ -1,20 +1,8 @@
 import { motion } from "framer-motion";
-import { Instagram, Mail, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { Instagram, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      setEmail("");
-    }
-  };
-
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
       {/* Background Image with Overlay */}
@@ -22,10 +10,10 @@ const Index = () => {
         <img
           src={heroBg}
           alt="Sfeervolle fotografie"
-          className="h-full w-full object-cover opacity-50"
+          className="h-full w-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-transparent to-background/50" />
       </div>
 
       {/* Content */}
@@ -37,28 +25,15 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center justify-between px-6 py-8 md:px-12 lg:px-20"
         >
+          <h2 className="font-handwritten text-3xl text-foreground md:text-4xl">
+            ashley deborah
+          </h2>
           <div className="flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-primary animate-pulse-slow" />
-            <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">
+            <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Binnenkort Online
             </span>
           </div>
-          <nav className="flex items-center gap-6">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors duration-300 hover:text-primary"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="mailto:info@fotografie.nl"
-              className="text-muted-foreground transition-colors duration-300 hover:text-primary"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-          </nav>
         </motion.header>
 
         {/* Main Content */}
@@ -70,9 +45,9 @@ const Index = () => {
             className="max-w-3xl"
           >
             {/* Title */}
-            <h1 className="font-serif text-5xl font-medium leading-[1.1] tracking-tight text-foreground md:text-7xl lg:text-8xl">
+            <h1 className="font-serif text-4xl font-medium leading-[1.15] tracking-tight text-foreground md:text-6xl lg:text-7xl">
               <span className="block">Iets</span>
-              <span className="block italic text-gradient-gold">bijzonders</span>
+              <span className="block italic text-gradient-warm">bijzonders</span>
               <span className="block">is in de maak</span>
             </h1>
 
@@ -84,47 +59,37 @@ const Index = () => {
               className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
               Een nieuwe fotografie portfolio gewijd aan de mooiste momenten: 
-              newborn, zwangerschap en familie. Meld je aan om als eerste op de hoogte te zijn.
+              newborn, zwangerschap en familie. Binnenkort hier te bewonderen.
             </motion.p>
 
-            {/* Email Form */}
+            {/* Contact Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="mt-12"
+              className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8"
             >
-              {!isSubscribed ? (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">
-                  <div className="relative flex-1">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Vul je e-mailadres in"
-                      required
-                      className="w-full border-gradient bg-secondary/50 px-5 py-4 text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-primary sm:min-w-[300px]"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="group flex items-center justify-center gap-2 bg-primary px-8 py-4 font-medium text-primary-foreground transition-all duration-300 hover:bg-gold-glow glow-gold"
-                  >
-                    <span>Houd mij op de hoogte</span>
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
-                </form>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="border-gradient bg-secondary/30 px-6 py-5 backdrop-blur-sm"
-                >
-                  <p className="text-foreground">
-                    <span className="text-primary">Dankjewel!</span> We nemen contact met je op zodra we live gaan.
-                  </p>
-                </motion.div>
-              )}
+              <a
+                href="https://instagram.com/ashleydeborah.fotografie"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 text-foreground transition-colors duration-300 hover:text-primary"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground glow-warm">
+                  <Instagram className="h-5 w-5" />
+                </div>
+                <span className="font-medium">@ashleydeborah.fotografie</span>
+              </a>
+              
+              <a
+                href="mailto:contact@ashleydeborah.nl"
+                className="group flex items-center gap-3 text-foreground transition-colors duration-300 hover:text-primary"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground glow-warm">
+                  <Mail className="h-5 w-5" />
+                </div>
+                <span className="font-medium">contact@ashleydeborah.nl</span>
+              </a>
             </motion.div>
           </motion.div>
         </main>
@@ -137,7 +102,7 @@ const Index = () => {
           className="flex flex-col items-start justify-between gap-4 px-6 py-8 sm:flex-row sm:items-center md:px-12 lg:px-20"
         >
           <p className="text-sm text-muted-foreground">
-            © 2025 · Alle rechten voorbehouden
+            © 2025 Ashley Deborah · Alle rechten voorbehouden
           </p>
           <p className="font-serif text-lg italic text-muted-foreground">
             Kostbare momenten, voor altijd vastgelegd

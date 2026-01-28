@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,51 +6,52 @@
 
 @layer base {
   :root {
-    /* Dark, moody photography portfolio palette */
-    --background: 20 10% 8%;
-    --foreground: 40 30% 92%;
+    /* Warm, cozy photography portfolio palette */
+    --background: 30 30% 96%;
+    --foreground: 25 25% 20%;
 
-    --card: 20 10% 12%;
-    --card-foreground: 40 30% 92%;
+    --card: 30 25% 94%;
+    --card-foreground: 25 25% 20%;
 
-    --popover: 20 10% 10%;
-    --popover-foreground: 40 30% 92%;
+    --popover: 30 30% 96%;
+    --popover-foreground: 25 25% 20%;
 
-    --primary: 40 50% 65%;
-    --primary-foreground: 20 10% 8%;
+    --primary: 15 45% 55%;
+    --primary-foreground: 30 30% 98%;
 
-    --secondary: 20 10% 15%;
-    --secondary-foreground: 40 20% 85%;
+    --secondary: 30 20% 90%;
+    --secondary-foreground: 25 25% 25%;
 
-    --muted: 20 8% 18%;
-    --muted-foreground: 40 10% 55%;
+    --muted: 25 15% 88%;
+    --muted-foreground: 25 15% 45%;
 
-    --accent: 35 60% 55%;
-    --accent-foreground: 20 10% 8%;
+    --accent: 350 35% 75%;
+    --accent-foreground: 25 25% 20%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 40 30% 92%;
+    --destructive-foreground: 30 30% 98%;
 
-    --border: 20 10% 20%;
-    --input: 20 10% 18%;
-    --ring: 40 50% 65%;
+    --border: 25 20% 85%;
+    --input: 25 20% 88%;
+    --ring: 15 45% 55%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
     /* Custom tokens */
-    --cream: 40 30% 92%;
-    --gold: 40 50% 65%;
-    --gold-glow: 35 60% 55%;
-    --charcoal: 20 10% 8%;
-    --charcoal-light: 20 10% 15%;
+    --cream: 30 30% 96%;
+    --blush: 350 35% 75%;
+    --terracotta: 15 45% 55%;
+    --warm-brown: 25 25% 20%;
+    --soft-peach: 25 40% 92%;
 
     /* Typography */
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-handwritten: 'Dancing Script', cursive;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Nunito', system-ui, sans-serif;
 
     /* Shadows */
-    --shadow-glow: 0 0 60px hsl(40 50% 65% / 0.15);
-    --shadow-soft: 0 20px 40px hsl(0 0% 0% / 0.3);
+    --shadow-soft: 0 10px 40px hsl(25 30% 20% / 0.08);
+    --shadow-warm: 0 4px 20px hsl(15 45% 55% / 0.12);
 
     /* Animations */
     --ease-elegant: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -77,52 +78,26 @@
 }
 
 @layer components {
-  .text-gradient-gold {
+  .text-gradient-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-glow)));
+    background-image: linear-gradient(135deg, hsl(var(--terracotta)), hsl(var(--blush)));
   }
 
-  .glow-gold {
-    box-shadow: var(--shadow-glow);
-  }
-
-  .border-gradient {
-    border: 1px solid transparent;
-    background: linear-gradient(hsl(var(--charcoal)), hsl(var(--charcoal))) padding-box,
-                linear-gradient(135deg, hsl(var(--gold) / 0.3), transparent 50%) border-box;
+  .glow-warm {
+    box-shadow: var(--shadow-warm);
   }
 }
 
 @layer utilities {
+  .font-handwritten {
+    font-family: var(--font-handwritten);
+  }
+
   .font-serif {
     font-family: var(--font-serif);
   }
 
   .font-sans {
     font-family: var(--font-sans);
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s var(--ease-elegant) forwards;
-  }
-
-  .animate-slide-up {
-    animation: slide-up 0.8s var(--ease-elegant) forwards;
-  }
-
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slide-up {
-    from { 
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to { 
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 }
